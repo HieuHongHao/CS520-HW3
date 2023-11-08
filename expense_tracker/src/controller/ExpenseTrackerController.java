@@ -52,6 +52,14 @@ public class ExpenseTrackerController {
     return true;
   }
 
+  public boolean removeTransaction(List<Integer> rows){
+    for(int row: rows){
+      model.removeTransactionByIdx(row);
+    }
+    refresh();
+    return true;
+  }
+
   public void applyFilter() {
     //null check for filter
     if(filter!=null){

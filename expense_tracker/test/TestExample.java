@@ -40,7 +40,7 @@ public class TestExample {
 
 
     public void checkTransaction(double amount, String category, Transaction transaction) {
-	assertEquals(amount, transaction.getAmount(), 0.01);
+	    assertEquals(amount, transaction.getAmount(), 0.01);
         assertEquals(category, transaction.getCategory());
         String transactionDateString = transaction.getTimestamp();
         Date transactionDate = null;
@@ -88,21 +88,21 @@ public class TestExample {
         assertEquals(0, model.getTransactions().size());
     
         // Perform the action: Add and remove a transaction
-	double amount = 50.0;
-	String category = "food";
+        double amount = 50.0;
+        String category = "food";
         Transaction addedTransaction = new Transaction(amount, category);
         model.addTransaction(addedTransaction);
     
-        // Pre-condition: List of transactions contains only
-	//                the added transaction
+        // Pre-condition: List of transactions contains only the added transaction
         assertEquals(1, model.getTransactions().size());
-	Transaction firstTransaction = model.getTransactions().get(0);
-	checkTransaction(amount, category, firstTransaction);
+        Transaction firstTransaction = model.getTransactions().get(0);
+        checkTransaction(amount, category, firstTransaction);
 
-	assertEquals(amount, getTotalCost(), 0.01);
+	    assertEquals(amount, getTotalCost(), 0.01);
 	
-	// Perform the action: Remove the transaction
+        // Perform the action: Remove the transaction
         model.removeTransaction(addedTransaction);
+
     
         // Post-condition: List of transactions is empty
         List<Transaction> transactions = model.getTransactions();

@@ -21,6 +21,10 @@ public class ExpenseTrackerModel {
     transactions.add(t);
   }
 
+  public void removeTransactionByIdx(int idx){
+    transactions.remove(idx);
+  }
+
   public void removeTransaction(Transaction t) {
     transactions.remove(t);
   }

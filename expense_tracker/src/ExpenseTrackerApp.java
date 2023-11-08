@@ -84,6 +84,7 @@ public class ExpenseTrackerApp {
 
     view.addUndoBtnListener(e -> {
         List<Integer> rowsWithoutTotal =  view.getSelectedRowsWithoutTotal();
+        controller.removeTransaction(rowsWithoutTotal);
     });
   }
 
