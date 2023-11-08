@@ -27,7 +27,7 @@ public class ExpenseTrackerView extends JFrame {
   private JTextField amountFilterField;
   private JButton amountFilterBtn;
 
-  
+  private JButton undoBtn;
 
   public ExpenseTrackerView() {
     setTitle("Expense Tracker"); // Set title
@@ -35,7 +35,6 @@ public class ExpenseTrackerView extends JFrame {
 
     String[] columnNames = {"serial", "Amount", "Category", "Date"};
     this.model = new DefaultTableModel(columnNames, 0);
-
     
     // Create table
     transactionsTable = new JTable(model);
@@ -62,7 +61,8 @@ public class ExpenseTrackerView extends JFrame {
     amountFilterField = new JTextField(10);
     amountFilterBtn = new JButton("Filter by Amount");
   
-
+    undoBtn = new JButton("Undo");
+    undoBtn.setEnabled(false);
   
     // Layout components
     JPanel inputPanel = new JPanel();
@@ -75,6 +75,7 @@ public class ExpenseTrackerView extends JFrame {
     JPanel buttonPanel = new JPanel();
     buttonPanel.add(amountFilterBtn);
     buttonPanel.add(categoryFilterBtn);
+    buttonPanel.add(undoBtn);
   
     // Add panels to frame
     add(inputPanel, BorderLayout.NORTH);
@@ -143,6 +144,19 @@ public class ExpenseTrackerView extends JFrame {
         return 0.0; // Default value (or any other appropriate value)
     }
   }
+
+  public void enableUndoButton(){
+      undoBtn.setEnabled(true);
+  }
+
+  public void disableUndoButton(){
+        undoBtn.setEnabled(false);
+  }
+
+  public ListSelectionModel getSelectionModel(){
+      return transactionsTable.getSelectionModel();
+  }
+
 
   public void refreshTable(List<Transaction> transactions) {
       // Clear existing rows

@@ -1,9 +1,15 @@
-import javax.swing.JOptionPane;
+import javax.swing.*;
+
 import controller.ExpenseTrackerController;
 import model.ExpenseTrackerModel;
 import view.ExpenseTrackerView;
 import model.Filter.AmountFilter;
 import model.Filter.CategoryFilter;
+
+import java.time.Year;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ExpenseTrackerApp {
 
@@ -31,7 +37,7 @@ public class ExpenseTrackerApp {
       
       // Call controller to add transaction
       boolean added = controller.addTransaction(amount, category);
-      
+
       if (!added) {
         JOptionPane.showMessageDialog(view, "Invalid amount or category entered");
         view.toFront();
@@ -67,7 +73,23 @@ public class ExpenseTrackerApp {
     JOptionPane.showMessageDialog(view,exception.getMessage());
     view.toFront();
    }});
-    
+    view.getSelectionModel().addListSelectionListener(e ->{
+        JTable table = view.getTransactionsTable();
+        int[] selectedRows = table.getSelectedRows();
+        List<Integer> rowsWithoutTotal = new ArrayList<>();
+        for(int row: selectedRows){
+            if(table.getValueAt(row,0).toString().equals("Total")){
+                continue;
+            }
+            rowsWithoutTotal.add(row);
+        }
+        if(rowsWithoutTotal.size() == 0){
+            view.disableUndoButton();
+        }else{
+            view.enableUndoButton();
+        }
+    });
+
 
   }
 }
