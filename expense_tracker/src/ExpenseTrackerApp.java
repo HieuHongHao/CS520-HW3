@@ -74,15 +74,7 @@ public class ExpenseTrackerApp {
     view.toFront();
    }});
     view.getSelectionModel().addListSelectionListener(e ->{
-        JTable table = view.getTransactionsTable();
-        int[] selectedRows = table.getSelectedRows();
-        List<Integer> rowsWithoutTotal = new ArrayList<>();
-        for(int row: selectedRows){
-            if(table.getValueAt(row,0).toString().equals("Total")){
-                continue;
-            }
-            rowsWithoutTotal.add(row);
-        }
+        List<Integer> rowsWithoutTotal =  view.getSelectedRowsWithoutTotal();
         if(rowsWithoutTotal.size() == 0){
             view.disableUndoButton();
         }else{
@@ -90,6 +82,10 @@ public class ExpenseTrackerApp {
         }
     });
 
-
+    view.addUndoBtnListener(e -> {
+        List<Integer> rowsWithoutTotal =  view.getSelectedRowsWithoutTotal();
+    });
   }
+
+
 }

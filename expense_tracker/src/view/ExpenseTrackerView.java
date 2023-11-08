@@ -10,6 +10,7 @@ import java.text.NumberFormat;
 
 import model.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExpenseTrackerView extends JFrame {
@@ -153,6 +154,10 @@ public class ExpenseTrackerView extends JFrame {
         undoBtn.setEnabled(false);
   }
 
+  public void addUndoBtnListener(ActionListener listener){
+      undoBtn.addActionListener(listener);
+  }
+
   public ListSelectionModel getSelectionModel(){
       return transactionsTable.getSelectionModel();
   }
@@ -207,6 +212,18 @@ public class ExpenseTrackerView extends JFrame {
 
       transactionsTable.repaint();
   }
+
+    public List<Integer> getSelectedRowsWithoutTotal() {
+      int[] selectedRows = transactionsTable.getSelectedRows();
+        List<Integer> rowsWithoutTotal = new ArrayList<>();
+        for(int row: selectedRows){
+            if(transactionsTable.getValueAt(row,0).toString().equals("Total")){
+                continue;
+            }
+            rowsWithoutTotal.add(row);
+        }
+        return rowsWithoutTotal;
+    }
 
 
 }
