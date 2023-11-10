@@ -65,20 +65,23 @@ public class testUndoEnabled {
         //should be the third transaction of the transaction table before the remove operation.
         double secondRowAmount = Double.parseDouble(table.getValueAt(1,1).toString());
         String secondRowCategory = table.getValueAt(1,2).toString();
+        Transaction thirdTransactionBeforeRemove = transactionList.get(2);
         Date secondRowDate = null;
         Date thirdTransactionDate = null;
         try {
             secondRowDate = Transaction.dateFormatter.parse(table.getValueAt(1,3).toString());
-            thirdTransactionDate = Transaction.dateFormatter.parse(transactionList.get(2).getTimestamp());
+            thirdTransactionDate = Transaction.dateFormatter.parse(thirdTransactionBeforeRemove.getTimestamp());
         } catch (ParseException e) {
             e.printStackTrace();
         }
         assertNotNull(secondRowDate);
         assertNotNull(thirdTransactionDate);
-        assertEquals(transactionList.get(2).getAmount(), secondRowAmount, 0.01);
-        assertEquals(transactionList.get(2).getCategory(), secondRowCategory);
+        assertEquals(thirdTransactionBeforeRemove.getAmount(), secondRowAmount, 0.01);
+        assertEquals(thirdTransactionBeforeRemove.getCategory(), secondRowCategory);
         assertTrue(thirdTransactionDate.getTime() - secondRowDate.getTime() < 60000);
+        assertEquals(3, model.getTransactions().size());
 
+        //Total cost is updated
         double rowWithTotal = Double.parseDouble(table.getValueAt(table.getRowCount() - 1, 3).toString());
         assertEquals(700, rowWithTotal, 0.01);
 

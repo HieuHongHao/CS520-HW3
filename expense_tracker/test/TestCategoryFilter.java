@@ -62,6 +62,7 @@ public class TestCategoryFilter {
             countTransaction ++;
             Component render = table.prepareRenderer(table.getCellRenderer(i,0), i, 0);
             Color backgroundColor = render.getBackground();
+            //Check if background color of filtered row is light green
             assertColorLightGreen(backgroundColor);
         }
         assertEquals(2, countTransaction);
