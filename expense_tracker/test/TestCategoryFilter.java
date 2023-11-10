@@ -39,7 +39,7 @@ public class TestCategoryFilter {
     @Test
     public void filterByCategory(){
         //Pre condition
-        assertTrue(model.getTransactions().size() == 0);
+        assertEquals(0, model.getTransactions().size());
         //Execution
         List<Transaction> transactionList = new ArrayList<>();
         transactionList.add(new Transaction(100, "bills"));

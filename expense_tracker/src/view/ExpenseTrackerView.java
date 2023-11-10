@@ -158,6 +158,10 @@ public class ExpenseTrackerView extends JFrame {
       undoBtn.addActionListener(listener);
   }
 
+  public void clickUndoBtn(){
+    undoBtn.doClick();
+  }
+
   public ListSelectionModel getSelectionModel(){
       return transactionsTable.getSelectionModel();
   }

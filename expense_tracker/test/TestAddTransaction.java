@@ -49,5 +49,9 @@ public class TestAddTransaction {
         assertEquals(50.00, amount, 0.01);
         assertEquals("food", category);
         assertTrue(new Date().getTime() - date.getTime() < 60000);
+
+        int rowWithTotal = table.getRowCount() - 1;
+        double total = Double.parseDouble(table.getValueAt(rowWithTotal,3).toString());
+        assertEquals(50.00, total, 0.01);
     }
 }
