@@ -214,7 +214,7 @@ public class ExpenseTrackerView extends JFrame {
   }
 
     public List<Integer> getSelectedRowsWithoutTotal() {
-      int[] selectedRows = transactionsTable.getSelectedRows();
+        int[] selectedRows = transactionsTable.getSelectedRows();
         List<Integer> rowsWithoutTotal = new ArrayList<>();
         for(int row: selectedRows){
             if(transactionsTable.getValueAt(row,0).toString().equals("Total")){

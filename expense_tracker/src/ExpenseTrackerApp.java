@@ -9,6 +9,7 @@ import model.Filter.CategoryFilter;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class ExpenseTrackerApp {
@@ -74,7 +75,7 @@ public class ExpenseTrackerApp {
     view.toFront();
    }});
     view.getSelectionModel().addListSelectionListener(e ->{
-        List<Integer> rowsWithoutTotal =  view.getSelectedRowsWithoutTotal();
+        List<Integer> rowsWithoutTotal = view.getSelectedRowsWithoutTotal();
         if(rowsWithoutTotal.size() == 0){
             view.disableUndoButton();
         }else{
@@ -83,7 +84,7 @@ public class ExpenseTrackerApp {
     });
 
     view.addUndoBtnListener(e -> {
-        List<Integer> rowsWithoutTotal =  view.getSelectedRowsWithoutTotal();
+        List<Integer> rowsWithoutTotal = view.getSelectedRowsWithoutTotal();
         controller.removeTransaction(rowsWithoutTotal);
     });
   }

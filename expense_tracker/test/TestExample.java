@@ -27,6 +27,7 @@ public class TestExample {
     model = new ExpenseTrackerModel();
     view = new ExpenseTrackerView();
     controller = new ExpenseTrackerController(model, view);
+
   }
 
     public double getTotalCost() {
@@ -112,5 +113,6 @@ public class TestExample {
         double totalCost = getTotalCost();
         assertEquals(0.00, totalCost, 0.01);
     }
-    
+
+
 }
