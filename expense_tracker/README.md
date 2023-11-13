@@ -1,17 +1,29 @@
-# hw1- Manual Review
+# hw2
 
-The homework will be based on this project named "Expense Tracker",where users will be able to add/remove daily transaction. 
+## Folder structure
 
-## Compile
+### expense_tracker/src/controller
 
-To compile the code from terminal, use the following command:
-```
-cd src
-javac ExpenseTrackerApp.java
-java ExpenseTracker
-```
+#### ExpenseTrackerController
 
-You should be able to view the GUI of the project upon successful compilation. 
+removeTransaction():
 
-## Java Version
-This code is compiled with ```openjdk 17.0.7 2023-04-18```. Please update your JDK accordingly if you face any incompatibility issue.
+Remove transation based on row index, then rerenders the page.
+
+### expense_tracker/src/controller
+
+#### ExpenseTrackerController
+
+enableUndoButton(), disableUndoButton(), addUndoBtnListener()
+
+
+### ExpenseTrackerApp
+
+We use highLightRows() method to highlight filtered row to green color.
+
+## Design pattern
+
+We use strategy design pattern.
+
+We enable the organization of individual filter algorithms into reusable classes. Adding new filters is straightforward by introducing new methods. Also, Users have the flexibility to filter by either "amount" or "category" individually.
+
