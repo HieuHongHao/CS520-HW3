@@ -150,10 +150,12 @@ public class ExpenseTrackerView extends JFrame {
       undoBtn.setEnabled(true);
   }
 
+  // Helper function to disable undo
   public void disableUndoButton(){
         undoBtn.setEnabled(false);
   }
 
+  // Add Listener for Undo Button
   public void addUndoBtnListener(ActionListener listener){
       undoBtn.addActionListener(listener);
   }
