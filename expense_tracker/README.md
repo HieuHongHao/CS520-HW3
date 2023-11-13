@@ -10,11 +10,13 @@ removeTransaction():
 
 Remove transation based on row index, then rerenders the page.
 
-### expense_tracker/src/controller
+### expense_tracker/src/view
 
-#### ExpenseTrackerController
+#### ExpenseTrackerView
 
-enableUndoButton(), disableUndoButton(), addUndoBtnListener()
+enableUndoButton(), disableUndoButton(), addUndoBtnListener():
+
+Enable undo button, disable undo button, and add event listener for undo button.
 
 
 ### ExpenseTrackerApp
